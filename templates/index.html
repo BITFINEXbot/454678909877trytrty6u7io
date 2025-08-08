@@ -1,0 +1,38 @@
+
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Bot Dashboard</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#0f0f0f;color:#eaeaea;margin:0;padding:16px}
+    .asset-btn{display:inline-block;padding:8px 12px;margin:4px;background:#222;border-radius:6px;color:#fff;text-decoration:none}
+    img.chart{width:100%;max-width:1000px;border-radius:8px}
+  </style>
+</head>
+<body>
+  <h2>Binary Options Bot — Dashboard</h2>
+  <div>
+    {% for a in assets %}
+      <a class="asset-btn" href="{{ url_for('index') }}?asset={{ a }}">{{ a }}</a>
+    {% endfor %}
+  </div>
+  <h3>Snapshot</h3>
+  <ul>
+    {% for k,v in snapshot.items() %}
+      <li>{{ k }}: <strong>{{ v }}</strong></li>
+    {% endfor %}
+  </ul>
+  <h3>Графика — {{ selected }}</h3>
+  <img class="chart" src="{{ url_for('chart_png') }}?asset={{ selected }}" alt="chart">
+  <h3>История на последните сигнали</h3>
+  <ol>
+    {% for h in history %}
+      <li>{{ h.time }} — {{ h.asset }} — {{ h.signal }}</li>
+    {% else %}
+      <li>Няма сигнали все още</li>
+    {% endfor %}
+  </ol>
+</body>
+</html>
