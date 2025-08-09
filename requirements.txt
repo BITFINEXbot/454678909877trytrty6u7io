@@ -1,7 +1,6 @@
-Flask==2.2.5
-yfinance==0.2.18
+yfinance
 pandas==2.2.2
-numpy==1.26.2
-matplotlib==3.8.0
-requests==2.31.0
-gunicorn==20.1.0
+matplotlib
+tkinterweb
+requests
+python-dotenv
